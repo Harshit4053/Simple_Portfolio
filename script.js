@@ -10,21 +10,21 @@ function firstPageAnim() {
         y: '-10',
         opacity: 0,
         duration: 1.5,
-        ease: Expo.easeInOut
+        ease: Expo.easeInOut,
     })
         .to(".boundingelem", {
             y: '0',
             stagger: .2,
             duration: 2,
             delay: -1,
-            ease: Expo.easeInOut
+            ease: Expo.easeInOut,
         })
-        .from(".herofooter", {
+        .from("#herofooter", {
             y: '-10',
             opacity: 0,
             duration: 1.5,
             delay: -1,
-            ease: Expo.easeInOut
+            ease: Expo.easeInOut,
         })
 }
 
@@ -73,7 +73,7 @@ document.querySelectorAll(".elem").forEach(function (elem) {
         var diff = dets.clientY - elem.getBoundingClientRect().top;
         diffrot = dets.clientX - rotate;
         rotate = dets.clientX;
-        
+
         gsap.to(elem.querySelector("img"), {
             opacity: 0,
             ease: Power3,
@@ -86,13 +86,29 @@ document.querySelectorAll(".elem").forEach(function (elem) {
         var diff = dets.clientY - elem.getBoundingClientRect().top;
         diffrot = dets.clientX - rotate;
         rotate = dets.clientX;
-        
+
         gsap.to(elem.querySelector("img"), {
             opacity: 1,
             ease: Power3,
             top: diff,
             left: dets.clientX,
-            rotate: gsap.utils.clamp(-20,20, diffrot*0.5)
+            rotate: gsap.utils.clamp(-20, 20, diffrot * 0.5)
         })
     })
 })
+
+
+function updateTime() {
+    const now = new Date();
+
+
+    document.getElementById("year").textContent = now.getFullYear() + " ©";
+
+
+    const options = { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' };
+    document.getElementById("liveTime").textContent = now.toLocaleTimeString("en-US", options);
+}
+
+
+updateTime();
+setInterval(updateTime, 60000);

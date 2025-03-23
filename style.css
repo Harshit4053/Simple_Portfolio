@@ -217,6 +217,7 @@ body {
 #about img {
 
     width: 200px;
+    border-radius: 50%;
 
 }
 
